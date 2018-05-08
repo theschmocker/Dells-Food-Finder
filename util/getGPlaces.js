@@ -3,7 +3,7 @@ const path = require('path');
 
 const timeout = require('./timeout');
 
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
+//require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const SEARCH_PARAMS = {
     location: '43.6275,-89.7710',
@@ -34,7 +34,7 @@ async function apiRequest(URL) {
     } catch (error) {
         return {
             ok: false,
-            error 
+            error: error.toString() 
         };
     }
 
@@ -167,11 +167,13 @@ function buildDetailsURL(placeID) {
     return `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeID}&key=${API_KEY}`
 }
 
-(async () => {
-    try {
-        const restaurants = await getRestaurants();
-        console.log(restaurants.data.map(r => r.name));
-    } catch (err) {
-        console.log(err);
-    }
-})();
+module.exports = getRestaurants;
+
+//(async () => {
+//    try {
+//        const restaurants = await getRestaurants();
+//        console.log(restaurants.data.map(r => r.name));
+//    } catch (err) {
+//        console.log(err);
+//    }
+//})();
