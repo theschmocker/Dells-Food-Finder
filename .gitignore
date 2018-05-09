@@ -67,3 +67,4 @@ typings/
 tmux.sh
 .tern-project
 .tern-port
+*.sqlite
