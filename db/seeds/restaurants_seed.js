@@ -6,7 +6,6 @@ exports.seed = async function(knex, Promise) {
     const restaurants = await getRestaurants();
 
     if (!restaurants.ok) return Promise.reject(restaurants.error);
-    console.log(restaurants.data.map(r => r.id));
 
     const insertions = restaurants.data.map(r => knex('restaurants').insert(r));
 
