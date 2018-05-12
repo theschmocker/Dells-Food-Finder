@@ -3,6 +3,8 @@ const path = require('path');
 
 const timeout = require('./timeout');
 
+require('dotenv').config();
+
 //require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const SEARCH_PARAMS = {
@@ -106,8 +108,9 @@ async function getRestaurantDetails(placeID) {
     }
 
     const desiredItems = [
-        'name',
         'id',
+        'place_id',
+        'name',
         'formatted_address',
         'url',
         'website',
@@ -118,7 +121,12 @@ async function getRestaurantDetails(placeID) {
     const data = Object.keys(response.data.result)
         .filter(key => desiredItems.includes(key))
         .reduce((obj, key) => {
-            obj[key] = response.data.result[key]
+            if (key === 'opening_hours') {
+                obj[key] = JSON.stringify(response.data.result[key]);
+            } else {
+                obj[key] = response.data.result[key]
+            }
+
             return obj;
         }, {});
 
