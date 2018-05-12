@@ -122,6 +122,7 @@ async function getRestaurantDetails(placeID) {
         .filter(key => desiredItems.includes(key))
         .reduce((obj, key) => {
             if (key === 'opening_hours') {
+                delete response.data.result[key].open_now;
                 obj[key] = JSON.stringify(response.data.result[key]);
             } else {
                 obj[key] = response.data.result[key]
@@ -155,6 +156,13 @@ async function getRestaurants(list) {
     })
 
     const restaurants = await Promise.all(restaurantPromises);
+
+    if (restaurants.some(r => r === undefined)) {
+        return {
+            ok: false,
+            error: 'Some details requests failed. Possible poor internet connection',
+        }
+    }
 
     return {
         ok: true,
