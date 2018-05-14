@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-const restaurants = require('./routes/restaurants');
+const apiRoutes = require('./routes');
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 
-app.use('/api/restaurants', restaurants);
+app.use('/api', apiRoutes);
 
 module.exports = app;
