@@ -75,17 +75,21 @@ async function getRestaurantList() {
     //the properties I want from the API response
     const desiredItems = [
         'place_id', 
+        'permanently_closed'
     ];
 
     // retain only desiredItems
-    const filteredRestaurants = restaurants.map(r => {
-        return Object.keys(r)
-            .filter(key => desiredItems.includes(key))
-            .reduce((obj, key) => {
-                obj[key] = r[key];
-                return obj;
-            }, {});
-    });
+    const filteredRestaurants = restaurants
+        .map(r => {
+            return Object.keys(r)
+                .filter(key => desiredItems.includes(key))
+                .reduce((obj, key) => {
+                    obj[key] = r[key];
+                    return obj;
+                }, {});
+        })
+        // filter out any restaurants that are perm. closed
+        .filter(restaurant => !restaurant.permanently_closed);
 
     return {
         ok: true,
