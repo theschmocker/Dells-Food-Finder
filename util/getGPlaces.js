@@ -74,9 +74,7 @@ async function getRestaurantList() {
 
     //the properties I want from the API response
     const desiredItems = [
-        'name',
         'place_id', 
-        'id',
     ];
 
     // retain only desiredItems
