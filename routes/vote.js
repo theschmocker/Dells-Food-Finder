@@ -30,7 +30,7 @@ router.post('/:id', async (req, res, next) => {
         await knex('votes').insert({ restaurant_id: req.params.id });
 
         // set cookie so users can't vote too often (probably naive)
-        res.cookie('votedRecently', 'yeah', {
+        res.cookie('votedRecently', req.params.id, {
             maxAge: 15 * 60 * 1000,
         });
 
