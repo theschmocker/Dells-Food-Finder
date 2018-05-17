@@ -5,6 +5,16 @@ const knex = require('../db');
 
 router.post('/:id', async (req, res, next) => {
     try {
+        // check if the user has voted on a restaurant recently
+        if (req.cookies.votedRecently) {
+            // if so, send it off to the error handler
+            res.locals.error = {
+                ok: false,
+                error: 'Voted too recently',
+            }
+            return next();
+        }
+
         // See if restaurant with requested id is in db
         const restaurant = await knex('restaurants').select('*').where({ id: req.params.id });
         if (!restaurant[0]) {
@@ -18,6 +28,12 @@ router.post('/:id', async (req, res, next) => {
         }
         
         await knex('votes').insert({ restaurant_id: req.params.id });
+
+        // set cookie so users can't vote too often (probably naive)
+        res.cookie('votedRecently', 'yeah', {
+            maxAge: 15 * 60 * 1000,
+        });
+
         return res.json({
             ok: true,
             data: 'Voted',
