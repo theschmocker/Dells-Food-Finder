@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www",
-    "dev": "NODE_ENV=development nodemon ./bin/www"
+    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "server-dev": "NODE_ENV=development nodemon ./bin/www",
+    "client-dev": "cd ./client/ && npm start"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
