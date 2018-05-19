@@ -23,16 +23,24 @@ class App extends Component {
 
     }
 
+    pickRestaurant() {
+        const pickedRestaurant = this.state.restaurants[Math.floor(Math.random() * 61)];
+        this.setState({ pickedRestaurant });
+    }
+
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+                <button onClick={() => this.pickRestaurant()}>Pick!</button>
+                {this.state.pickedRestaurant && 
+                        <div
+                            style={{border: '3px solid #bd1d00'}}
+                        >
+                            <h2>Your restaurant!</h2>
+                            <Restaurant 
+                                restaurant={this.state.pickedRestaurant}
+                            />
+                        </div>}
                 {this.state.restaurants && this.state.restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
             </div>
         );
