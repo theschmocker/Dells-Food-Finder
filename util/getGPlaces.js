@@ -114,9 +114,11 @@ async function getRestaurantDetails(placeID) {
         'place_id',
         'name',
         'formatted_address',
+        'formatted_phone_number',
         'url',
         'website',
-        'opening_hours'
+        'opening_hours',
+        'rating',
 
     ]
 
