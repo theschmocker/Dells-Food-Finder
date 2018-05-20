@@ -1,0 +1,42 @@
+.header {
+    width: 100%;
+    padding: 0 1.5rem;
+    background: #eb5757;
+    color: #4d0909;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    font-size: 1.35rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #eee;
+}
+
+.nav__title {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(50vh - 100px);
+    font-size: 1.1rem;
+}
+
+.hero__container {
+    max-width: 563px;
+    margin-bottom: 100px;
+}
+
+.hero__title {
+    font: 5rem 'Bangers';
+    margin: 0;
+}
