@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 
 import Restaurant from '../Restaurant';
+import RestaurantList from '../RestaurantList';
+import Randomizer from '../Randomizer';
+
+import RestaurantsContext from '../restaurants-context.js';
 
 class FoodFinder extends Component {
     state = {
-        restaurants: []
+        restaurants: [],
+        pickedRestaurant: undefined,
+        updatePickedRestaurant: this.updatePickedRestaurant.bind(this)
+    }
+
+    updatePickedRestaurant(pickedRestaurant) {
+        this.setState({ pickedRestaurant });
     }
 
     async componentDidMount() {
@@ -48,19 +58,12 @@ class FoodFinder extends Component {
 
     render() {
         return (
-            <main>
-                <button onClick={() => this.pickRestaurant()}>Pick!</button>
-                {this.state.pickedRestaurant && 
-                        <div
-                            style={{border: '3px solid #bd1d00'}}
-                        >
-                            <h2>Your restaurant!</h2>
-                            <Restaurant 
-                                restaurant={this.state.pickedRestaurant}
-                            />
-                        </div>}
-                        {this.state.restaurants && this.state.restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
-            </main>
+            <RestaurantsContext.Provider value={this.state}>
+                <main>
+                    <Randomizer />
+                    <RestaurantList/>
+                </main>
+            </RestaurantsContext.Provider>
         )
     }
 }
