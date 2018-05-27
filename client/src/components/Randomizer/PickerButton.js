@@ -2,7 +2,7 @@ import React from 'react';
 
 import RestaurantsContext from '../restaurants-context.js';
 
-const PickerButton = ({ className }) => (
+const PickerButton = () => (
         <RestaurantsContext.Consumer>
             {({ restaurants, pickedRestaurant, updatePickedRestaurant }) => {
                 return (
@@ -11,7 +11,7 @@ const PickerButton = ({ className }) => (
                             const restaurant = randomRestaurant(restaurants, pickedRestaurant);
                             updatePickedRestaurant(restaurant)
                         }}
-                        className={className}
+                        className="randomizer__button"
                     >
                         {!!pickedRestaurant 
                                 ? 'Pick Another'
