@@ -33,29 +33,6 @@ class FoodFinder extends Component {
 
     }
 
-    pickRestaurant() {
-        const getRandomRestaurant = () => {
-            const randomIndex = Math.floor(Math.random() * this.state.restaurants.length + 1);
-            const pickedRestaurant = this.state.restaurants[randomIndex];
-
-            return pickedRestaurant;
-        }
-
-        const sameRestaurant = (lastRestaurant, nextRestaurant) => {
-            return lastRestaurant !== undefined && lastRestaurant.id === nextRestaurant.id;
-        }
-
-        // pick restaurant
-        let restaurant = getRandomRestaurant();
-
-        // if restaurant is undefined or the same as the last restaurant, pick a new one
-        while (!restaurant || sameRestaurant(this.state.pickedRestaurant, restaurant)) {
-            restaurant = getRandomRestaurant() 
-        }
-
-        this.setState({ pickedRestaurant: restaurant });
-    }
-
     render() {
         return (
             <RestaurantsContext.Provider value={this.state}>
