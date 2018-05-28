@@ -7,9 +7,7 @@ const OpenStatus = ({ restaurant }) => {
         <p>
             {!!periods 
                     ? 
-                    isOpen(periods) 
-                    ? 'Open' 
-                    : 'Closed'
+                    openStatus(periods) 
                     : 
                     'Unknown'
             }
@@ -20,19 +18,24 @@ const OpenStatus = ({ restaurant }) => {
 
 export default OpenStatus;
 
-function isOpen(periods) {
+function openStatus(periods) {
     const today = new Date();
     const now = today.getTime();
     const period = periods[today.getDay()];
-
-
+    
     // open 24 hours
-    if (period.open && !period.close) return true;
+    if (periods.length === 1 && periods[0]) return 'Open'
+    if (period.open && !period.close) return 'Open';
+    
+    // some restaurant schedules are incomplete
+    if (typeof period === 'undefined') return 'Unknown';
+
+
 
     const openMS = getPeriodMilliseconds(period.open, today);
     const closeMS = getPeriodMilliseconds(period.close, today);
 
-    return (now >= openMS && now < closeMS);
+    return (now >= openMS && now < closeMS) ? 'Open' : 'Closed';
 }
 
 function getPeriodMilliseconds(period, today) {
