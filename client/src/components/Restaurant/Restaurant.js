@@ -3,6 +3,7 @@ import React from 'react';
 import OpenStatus from './OpenStatus';
 import AddressLink from './AddressLink';
 import WebsiteLink from './WebsiteLink';
+import PhoneLink from './PhoneLink';
 import Hours from './Hours';
 
 const Restaurant = ({ restaurant }) => {
@@ -16,6 +17,9 @@ const Restaurant = ({ restaurant }) => {
             <WebsiteLink 
                 url={restaurant.website}
                 name={restaurant.name}
+            />
+            <PhoneLink 
+                number={restaurant.formatted_phone_number}
             />
             <Hours 
                 hours={restaurant 
