@@ -1,10 +1,12 @@
 import React from 'react';
 
-const OpenStatus = ({ restaurant }) => {
+const OpenStatus = ({ restaurant, className }) => {
     const periods = restaurant && restaurant.opening_hours ? restaurant.opening_hours.periods : null;
 
     return (
-        <p>
+        <p
+            className={className}
+        >
             {!!periods 
                     ? 
                     openStatus(periods) 

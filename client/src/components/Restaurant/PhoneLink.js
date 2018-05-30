@@ -1,8 +1,14 @@
 import React, { Fragment } from 'react';
 
-const PhoneLink = ({ number }) => ( 
+const PhoneLink = ({ number, className }) => ( 
     <Fragment>
-        {number && <a href={`tel:${replaceNonDigits(number)}`}>{number}</a>}
+        {number 
+                && <a 
+                    href={`tel:${replaceNonDigits(number)}`}
+                    className={className}
+                >
+                    {number}
+                </a>}
     </Fragment>
 )
 

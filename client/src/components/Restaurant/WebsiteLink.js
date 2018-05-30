@@ -4,6 +4,7 @@ const WebsiteLink = ({ name, url, className }) => (
     <a 
         title={name} 
         href={url}
+        className={className}
     >
         Website
     </a>
