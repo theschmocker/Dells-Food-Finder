@@ -1,8 +1,16 @@
 @import url(./fonts.css);
 
+/*
+ * 1. Base Styles
+ * 2. Header
+ * 3. Randomizer
+ * */
+
 * {
     box-sizing: border-box;
 }
+
+/* Base Styles */
 
 html {
     font-size: 16px;
@@ -14,6 +22,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: #eee;
 }
+
+/* Header */
 
 .header {
     width: 100%;
@@ -60,6 +70,7 @@ body {
     margin: 0;
 }
 
+/* Randomizer */
 
 .randomizer {
     max-width: 600px;
