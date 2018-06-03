@@ -7,8 +7,6 @@ import PickedRestaurant from './PickedRestaurant';
 
 import RestaurantsContext from '../restaurants-context.js';
 
-import './styles.css'
-
 const Randomizer = () => (
     <div className="randomizer">
         <RestaurantsContext.Consumer>
