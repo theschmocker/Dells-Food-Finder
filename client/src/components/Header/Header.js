@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 import Nav from './Nav';
 import Hero from './Hero';
 
-import './Header.css';
-
 const Header = ({ location }) => (
     <header className="header">
         <Nav />
