@@ -1,16 +1,18 @@
 @import url(./fonts.css);
 
 /*
- * 1. Base Styles
+ * 1. BaseStyles
  * 2. Header
- * 3. Randomizer
- * */
+ * 3. Restaurant
+ * 4. Randomizer
+ * 5. RestaurantList
+ */
 
 * {
     box-sizing: border-box;
 }
 
-/* Base Styles */
+/* BaseStyles */
 
 html {
     font-size: 16px;
@@ -70,6 +72,25 @@ body {
     margin: 0;
 }
 
+/* Restaurant */
+
+.restaurant {
+    background: #fff;
+    padding: 1rem;
+}
+
+.restaurant__name {
+    color: hsl(0, 0%, 10%);
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.restaurant__hours {
+    list-style-type: none;
+    padding: 0;
+    color: hsl(0, 0%, 50%);
+}
+
 /* Randomizer */
 
 .randomizer {
@@ -77,8 +98,6 @@ body {
     min-height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
     margin-top: -10vh;
     padding: 1rem;
