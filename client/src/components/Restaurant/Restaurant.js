@@ -13,22 +13,27 @@ const Restaurant = ({ restaurant }) => {
             <AddressLink 
                 url={restaurant.url}
                 address={restaurant.formatted_address}
+                className="restaurant__address"
             />
             <WebsiteLink 
                 url={restaurant.website}
                 name={restaurant.name}
+                className="restaurant__website"
             />
             <PhoneLink 
                 number={restaurant.formatted_phone_number}
+                className="restaurant__phone-number"
             />
             <Hours 
                 hours={restaurant 
                         && restaurant.opening_hours 
                         && restaurant.opening_hours.weekday_text}
+                className="restaurant__hours"
             />
-            <OpenStatus restaurant={restaurant}/>
-            <ul className="restaurant__hours">
-            </ul>
+            <OpenStatus 
+                restaurant={restaurant}
+                className="restaurant__open-status"
+            />
         </div>
     )
 }
