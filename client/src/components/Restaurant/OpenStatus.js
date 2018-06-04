@@ -9,11 +9,11 @@ const OpenStatus = ({ restaurant, className }) => {
             className={className}
             role="open-status"
         >
-            <span>{status}</span>
             <Indicator 
                 blockClass={className}
                 status={status}
             />
+            <span>{status}</span>
         </div>
     )
 }
