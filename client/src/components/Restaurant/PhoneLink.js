@@ -8,7 +8,7 @@ const PhoneLink = ({ number, className }) => (
                     href={`tel:${replaceNonDigits(number)}`}
                     className={className}
                 >
-                    <FaPhone />{number}
+                    <FaPhone /> {number}
                 </a>}
     </Fragment>
 )
