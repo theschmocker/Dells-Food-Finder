@@ -2,21 +2,25 @@ import React from 'react';
 
 const OpenStatus = ({ restaurant, className }) => {
     const periods = restaurant && restaurant.opening_hours ? restaurant.opening_hours.periods : null;
-
+    const status = periods ? openStatus(periods) : 'Unknown';
+     
     return (
-        <p
+        <div
             className={className}
+            role="open-status"
         >
-            {!!periods 
-                    ? 
-                    openStatus(periods) 
-                    : 
-                    'Unknown'
-            }
-
-        </p>
+            <span>{status}</span>
+            <Indicator 
+                blockClass={className}
+                status={status}
+            />
+        </div>
     )
 }
+
+const Indicator = ({ status, blockClass }) => (    
+    <span aria-hidden="true" className={`${blockClass}__indicator ${blockClass}__indicator--${status.toLowerCase()}`}></span>
+)
 
 export default OpenStatus;
 
