@@ -116,3 +116,17 @@ body {
     outline: none;
 
 }
+
+/* RestaurantList */
+
+.restaurant__list {
+    margin: 2rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.restaurant__list .restaurant {
+    border-radius: 3px;
+    box-shadow: 0 6px 4px 0 hsl(0, 0%, 85%);
+}
