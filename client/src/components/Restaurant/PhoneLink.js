@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import FaPhone from 'react-icons/lib/fa/phone';
 
 const PhoneLink = ({ number, className }) => ( 
     <Fragment>
@@ -7,7 +8,7 @@ const PhoneLink = ({ number, className }) => (
                     href={`tel:${replaceNonDigits(number)}`}
                     className={className}
                 >
-                    {number}
+                    <FaPhone />{number}
                 </a>}
     </Fragment>
 )

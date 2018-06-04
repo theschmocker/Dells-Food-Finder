@@ -1,4 +1,5 @@
 import React from 'react';
+import FaMapMarker from 'react-icons/lib/fa/map-marker';
 
 const AddressLink = ({ address, url, className }) => (    
     <a 
@@ -6,7 +7,7 @@ const AddressLink = ({ address, url, className }) => (
         href={url}
         className={className}
     >
-        Map
+        <FaMapMarker /> Map
     </a>
 )
 

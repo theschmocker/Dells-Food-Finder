@@ -1,4 +1,5 @@
 import React from 'react';
+import FaExternalLink from 'react-icons/lib/fa/external-link';
 
 const WebsiteLink = ({ name, url, className }) => (    
     <a 
@@ -6,7 +7,7 @@ const WebsiteLink = ({ name, url, className }) => (
         href={url}
         className={className}
     >
-        Website
+        <FaExternalLink /> Website
     </a>
 )
 
