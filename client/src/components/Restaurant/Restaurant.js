@@ -10,19 +10,9 @@ const Restaurant = ({ restaurant }) => {
     return (
         <div className="restaurant">
             <h2 className="restaurant__name">{restaurant.name}</h2>
-            <AddressLink 
-                url={restaurant.url}
-                address={restaurant.formatted_address}
-                className="restaurant__address"
-            />
-            <WebsiteLink 
-                url={restaurant.website}
-                name={restaurant.name}
-                className="restaurant__website"
-            />
-            <PhoneLink 
-                number={restaurant.formatted_phone_number}
-                className="restaurant__phone-number"
+            <OpenStatus 
+                restaurant={restaurant}
+                className="restaurant__open-status"
             />
             <Hours 
                 hours={restaurant 
@@ -30,9 +20,19 @@ const Restaurant = ({ restaurant }) => {
                         && restaurant.opening_hours.weekday_text}
                 className="restaurant__hours"
             />
-            <OpenStatus 
-                restaurant={restaurant}
-                className="restaurant__open-status"
+            <AddressLink 
+                url={restaurant.url}
+                address={restaurant.formatted_address}
+                className="restaurant__address restaurant__link"
+            />
+            <WebsiteLink 
+                url={restaurant.website}
+                name={restaurant.name}
+                className="restaurant__website restaurant__link"
+            />
+            <PhoneLink 
+                number={restaurant.formatted_phone_number}
+                className="restaurant__phone-number restaurant__link"
             />
         </div>
     )
