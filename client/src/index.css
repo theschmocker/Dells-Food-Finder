@@ -91,6 +91,42 @@ body {
     color: hsl(0, 0%, 50%);
 }
 
+.restaurant__link {
+    display: inline-block;
+    text-decoration: none;
+    color: #555;
+    padding: 5px 1rem 5px 1rem;
+    margin: 10px 10px 10px 0;
+    background: #ddd;
+}
+
+.restaurant__link:visited {
+    
+}
+
+.restaurant__open-status {
+    color: #4a4a4a;
+    display: flex;
+    align-items: center;
+}
+
+.restaurant__open-status__indicator {
+    width: 0.5em;
+    height: 0.5em;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 5px;
+    margin-top: 6px;
+}
+
+.restaurant__open-status__indicator--open {
+    background: #2d9b54;
+}
+
+.restaurant__open-status__indicator--closed {
+    background: #b2162d;
+}
+
 /* Randomizer */
 
 .randomizer {
@@ -123,10 +159,24 @@ body {
     margin: 2rem;
     display: grid;
     grid-gap: 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .restaurant__list .restaurant {
+    position: relative;
     border-radius: 3px;
     box-shadow: 0 6px 4px 0 hsl(0, 0%, 85%);
+    /*border-bottom: 5px solid linear-gradient(40deg, #9b2d3d, #8b2d9b); */
+}
+
+.restaurant__list > .restaurant:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: linear-gradient(40deg, #9b2d3d, #8b2d9b);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
