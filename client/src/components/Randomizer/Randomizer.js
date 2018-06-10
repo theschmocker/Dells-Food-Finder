@@ -4,6 +4,7 @@ import Restaurant from '../Restaurant';
 import PickerButton from './PickerButton';
 import NotPicked from './NotPicked';
 import PickedRestaurant from './PickedRestaurant';
+import Loader from './Loader';
 
 import RestaurantsContext from '../restaurants-context.js';
 
@@ -22,11 +23,12 @@ class Randomizer extends Component {
             <div className="randomizer">
                 <RestaurantsContext.Consumer>
                     {({ pickedRestaurant }) => {
-                        return pickedRestaurant 
-                            ? <PickedRestaurant restaurant={pickedRestaurant} />
-                            : <NotPicked />
+                        if (pickedRestaurant) {
+                            return this.state.loading ? <Loader /> : <PickedRestaurant restaurant={pickedRestaurant} />
+                        }
                     }}
                 </RestaurantsContext.Consumer>
+                {!this.state.loading && <PickerButton loadingFunction={this.fakeLoading}/>}
             </div>
             
         );

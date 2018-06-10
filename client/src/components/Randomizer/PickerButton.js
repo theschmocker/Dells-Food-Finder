@@ -2,12 +2,13 @@ import React from 'react';
 
 import RestaurantsContext from '../restaurants-context.js';
 
-const PickerButton = () => (
+const PickerButton = ({ loadingFunction }) => (
         <RestaurantsContext.Consumer>
             {({ restaurants, pickedRestaurant, updatePickedRestaurant }) => {
                 return (
                     <button 
                         onClick={() => {
+                            loadingFunction();
                             const restaurant = randomRestaurant(restaurants, pickedRestaurant);
                             updatePickedRestaurant(restaurant)
                         }}

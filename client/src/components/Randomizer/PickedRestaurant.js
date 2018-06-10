@@ -4,10 +4,7 @@ import Restaurant from '../Restaurant';
 import PickerButton from './PickerButton';
 
 const PickedRestaurant = ({ restaurant }) => (
-    <Fragment>
-        <Restaurant restaurant={restaurant} />
-        <PickerButton />
-    </Fragment>
+    <Restaurant restaurant={restaurant} />
 )
 
 export default PickedRestaurant;
