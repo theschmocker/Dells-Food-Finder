@@ -20,15 +20,21 @@ class Randomizer extends Component {
 
     render() {
         return (
-            <div className="randomizer">
-                <RestaurantsContext.Consumer>
-                    {({ pickedRestaurant }) => {
-                        if (pickedRestaurant) {
-                            return this.state.loading ? <Loader /> : <PickedRestaurant restaurant={pickedRestaurant} />
-                        }
-                    }}
-                </RestaurantsContext.Consumer>
-                {!this.state.loading && <PickerButton loadingFunction={this.fakeLoading}/>}
+            <div class="randomizer__container">
+                <div className="randomizer">
+                    
+                    <RestaurantsContext.Consumer>
+                        {({ pickedRestaurant }) => {
+                            if (pickedRestaurant) {
+                                return this.state.loading ? <Loader /> : <PickedRestaurant restaurant={pickedRestaurant} />
+                            }
+                            else {
+                                return <h2 class="randomizer__heading">Randomizer</h2>
+                            }
+                        }}
+                    </RestaurantsContext.Consumer>
+                    {!this.state.loading && <PickerButton loadingFunction={this.fakeLoading}/>}
+                </div>
             </div>
             
         );
