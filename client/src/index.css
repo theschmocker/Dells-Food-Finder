@@ -15,7 +15,7 @@
 /* BaseStyles */
 
 html {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 body {
@@ -58,6 +58,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 300px;
     height: calc(50vh - 100px);
     font-size: 1.1rem;
 }
@@ -65,10 +66,11 @@ body {
 .hero__container {
     max-width: 563px;
     margin-bottom: 100px;
+    padding: 2.5rem;
 }
 
 .hero__title {
-    font: 5rem 'Bangers';
+    font: 4rem 'Bangers';
     margin: 0;
 }
 
@@ -130,17 +132,31 @@ body {
 
 /* Randomizer */
 
+.randomizer__container {
+    margin: 0 auto;
+    padding: 0 1rem;
+    margin-top: -20vh;
+}
+
 .randomizer {
+    position: relative;
     max-width: 600px;
     min-height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    margin-top: -10vh;
     padding: 1rem;
     background: white;
     border-radius: 2.5px;
     box-shadow: 0 5px 10px rgba(0,0,0, 0.1);
+}
+
+.randomizer__heading {
+    position: absolute;
+    top: 0.5rem;
+    color: #777;
 }
 
 .randomizer__button {
@@ -232,10 +248,13 @@ body {
 /* RestaurantList */
 
 .restaurant__list {
-    margin: 2rem;
+    margin: 2rem auto;
+    padding: 1rem;
     display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
 }
 
 .restaurant__list .restaurant {
@@ -255,4 +274,10 @@ body {
     background: linear-gradient(40deg, #9b2d3d, #8b2d9b);
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+}
+
+@media only screen and (min-width: 600px) {
+    .restaurant__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
