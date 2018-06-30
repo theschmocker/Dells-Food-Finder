@@ -18,7 +18,7 @@ class Randomizer extends Component {
 
     render() {
         return (
-            <div class="randomizer__container">
+            <div className="randomizer__container">
                 <div className="randomizer">
                     
                     <RestaurantsContext.Consumer>
@@ -27,7 +27,7 @@ class Randomizer extends Component {
                                 return this.state.loading ? <Loader /> : <PickedRestaurant restaurant={pickedRestaurant} />
                             }
                             else {
-                                return <h2 class="randomizer__heading">Randomizer</h2>
+                                return <h2 className="randomizer__heading">Randomizer</h2>
                             }
                         }}
                     </RestaurantsContext.Consumer>
