@@ -27,7 +27,7 @@ export default PickerButton;
 
 function randomRestaurant(restaurants, lastPicked) {
     const getRandomRestaurant = () => {
-        const randomIndex = Math.floor(Math.random() * restaurants.length + 1);
+        const randomIndex = Math.floor(Math.random() * restaurants.length);
         const pickedRestaurant = restaurants[randomIndex];
 
         return pickedRestaurant;
