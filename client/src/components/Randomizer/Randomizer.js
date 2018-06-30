@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import Restaurant from '../Restaurant';
 import PickerButton from './PickerButton';
-import NotPicked from './NotPicked';
 import PickedRestaurant from './PickedRestaurant';
 import Loader from './Loader';
 

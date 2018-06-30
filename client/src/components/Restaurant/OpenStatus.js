@@ -6,7 +6,7 @@ const OpenStatus = ({ restaurant, className }) => {
     return (
         <div
             className={className}
-            role="open-status"
+            aria-label="open status"
         >
             <Indicator 
                 blockClass={className}

@@ -9,7 +9,7 @@ const Nav = ({ match }) => (
 )
 
 const Title = () => (
-    <Link to="/" ><h1 className="nav__title">Dells Food Finder 🍔</h1></Link>
+    <Link to="/" ><h1 className="nav__title">Dells Food Finder <span role="img" aria-label="hamburger emoji">🍔</span></h1></Link>
 )
 
 const Links = () => (

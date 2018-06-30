@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Restaurant from '../Restaurant';
 import RestaurantList from '../RestaurantList';
 import Randomizer from '../Randomizer';
 
