@@ -8,9 +8,9 @@ import RestaurantsContext from '../restaurants-context.js';
 //.map(day => <li>{day}</li>)}
 const RestaurantList = () => (
     <RestaurantsContext.Consumer>
-        {({ restaurants }) => (
+        {({ filteredRestaurants }) => (
             <div className="restaurant__list">
-                {restaurants.map(r => (
+                {filteredRestaurants.map(r => (
                     <Restaurant 
                         restaurant={r} 
                         key={r.id}

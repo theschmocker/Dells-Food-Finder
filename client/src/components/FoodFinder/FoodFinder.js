@@ -10,6 +10,8 @@ import openStatus from '../../util/openStatus';
 class FoodFinder extends Component {
     state = {
         restaurants: [],
+        filteredRestaurants: [],
+        openToggle: false,
         pickedRestaurant: undefined,
         updatePickedRestaurant: this.updatePickedRestaurant.bind(this)
     }
@@ -39,12 +41,28 @@ class FoodFinder extends Component {
             // calculate open status of restaurants
             restaurants = this.transformRestaurants(restaurants);
 
-            this.setState({ restaurants });
+            this.setState({ 
+                restaurants,
+                filteredRestaurants: restaurants,
+            });
 
         } catch (err) { // handle fetch error
             this.setState({ fetchError: err });
         }
 
+    }
+
+    toggleFilter = () => {
+        this.setState({ openToggle: !this.state.openToggle });
+        this.filterRestaurants();
+    }
+
+    filterRestaurants() {
+        const filteredRestaurants = !this.state.openToggle 
+            ? this.state.restaurants.filter(r => r.opening_hours.open_status === 'Open')
+            : this.state.restaurants;
+
+        this.setState({ filteredRestaurants });
     }
 
     transformRestaurants(restaurants) {
@@ -65,7 +83,12 @@ class FoodFinder extends Component {
 
     render() {
         return (
-            <RestaurantsContext.Provider value={this.state}>
+            <RestaurantsContext.Provider 
+                value={{
+                    ...this.state,
+                    toggleFilter: this.toggleFilter,
+                }}
+            >
                 <main>
                     <Randomizer />
                     <RestaurantList/>

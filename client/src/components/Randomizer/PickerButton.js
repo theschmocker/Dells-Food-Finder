@@ -1,29 +1,49 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import RestaurantsContext from '../restaurants-context.js';
 
 const PickerButton = ({ loadingFunction }) => (
         <RestaurantsContext.Consumer>
-            {({ restaurants, pickedRestaurant, updatePickedRestaurant }) => {
+            {({ filteredRestaurants, pickedRestaurant, updatePickedRestaurant, openToggle, toggleFilter }) => {
                 return (
-                    <button 
-                        onClick={() => {
-                            loadingFunction();
-                            const restaurant = randomRestaurant(restaurants, pickedRestaurant);
-                            updatePickedRestaurant(restaurant)
-                        }}
-                        className="randomizer__button"
-                    >
-                        {!!pickedRestaurant 
-                                ? 'Pick Another'
-                                : 'Random Restaurant'}
-                    </button>
+                    <Fragment>
+                        <button 
+                            onClick={() => {
+                                loadingFunction();
+                                const restaurant = randomRestaurant(filteredRestaurants, pickedRestaurant);
+                                updatePickedRestaurant(restaurant)
+                            }}
+                            className="randomizer__button"
+                        >
+                            {!!pickedRestaurant 
+                                    ? 'Pick Another'
+                                    : 'Random Restaurant'}
+                        </button>
+                        <OpenToggle openToggle={openToggle} toggleFilter={toggleFilter}/>
+                    </Fragment>
                 )
             }}
         </RestaurantsContext.Consumer>
 )
 
 export default PickerButton;
+
+const OpenToggle = ({ openToggle, toggleFilter }) => ( 
+    <div className="open-toggle">
+        <span className="open-toggle__label">Open Restaurants Only</span>
+        <input 
+            className="open-toggle__input"
+            type="checkbox" 
+            id="switch" 
+            checked={openToggle} 
+            onClick={toggleFilter}
+        />
+        <label 
+            htmlFor="switch"
+            className="open-toggle__button"
+        >Toggle</label>
+    </div>
+)
 
 function randomRestaurant(restaurants, lastPicked) {
     const getRandomRestaurant = () => {
