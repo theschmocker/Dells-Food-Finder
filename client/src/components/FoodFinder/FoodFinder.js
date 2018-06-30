@@ -6,6 +6,8 @@ import Randomizer from '../Randomizer';
 
 import RestaurantsContext from '../restaurants-context.js';
 
+import openStatus from '../../util/openStatus';
+
 class FoodFinder extends Component {
     state = {
         restaurants: [],
@@ -20,12 +22,29 @@ class FoodFinder extends Component {
     async componentDidMount() {
         try {
             const res = await fetch('/api/restaurants');
-            const restaurants = await res.json();
+            let restaurants = await res.json();
 
             // handle server response error
             if (!restaurants.ok) return this.setState({ restaurantsError: restaurants.error });
 
-            this.setState({ restaurants: restaurants.data });
+            // calculate open status of restaurants
+            restaurants = restaurants.data.map(r => {
+                const opening_hours = r.opening_hours ? {
+                    ...r.opening_hours,
+                    open_status: openStatus(r.opening_hours.periods),
+                } : {
+                    open_status: openStatus(null)
+                }
+
+                return {
+                    ...r,
+                    opening_hours
+                }
+            });
+
+            
+
+            this.setState({ restaurants });
 
         } catch (err) { // handle fetch error
             this.setState({ fetchError: err });
