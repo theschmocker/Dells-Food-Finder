@@ -350,13 +350,36 @@ body {
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5) inset;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
     justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: center;
+}
+
+.footer > *:not(span) {
+    height: 100%;
+    margin: 0;
 }
 
 .footer__title {
     padding-left: 2.5rem;
     font-size: 2.75rem;
+}
+
+.footer__contact-container {
+}
+
+.footer__contact-title {
+    margin: 0 0 1rem 0;
+}
+
+.footer__contact-email {
+    color: #eee;
+}
+
+.footer__social-madewith {
+    margin: 0 0 0.5rem 0;
 }
 
 .footer__social-icons {
